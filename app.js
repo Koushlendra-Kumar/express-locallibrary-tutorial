@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+var dotenv = require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -15,8 +16,8 @@ app.use(helmet());
 //Set up mongoose connection
 var mongoose = require('mongoose');
 // Set up mongoose connection
-var dev_db_url = 'mongodb+srv://locallibrary:ellproject@cluster0.prshg.mongodb.net/local_library?retryWrites=true&w=majority';
-var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+var mongoDB = process.env.MONGODB_URI ;
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(()=> console.log('connected'))
